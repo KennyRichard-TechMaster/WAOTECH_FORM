@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Waotech Limited | Tech School Registration</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="nav-left">
+        <img
+          src="/static/images/WhatsApp Image 2026-03-23 at 2.16.35 PM.jpeg"
+          class="logo"
+        />
+        <div>
+          <h1>Waotech Limited</h1>
+          <p class="subtext">
+            No. 2 Victoria Street, off Osolo Way, Isolo Lagos
+          </p>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <p><strong>Phone:</strong> +234 810 659 8180</p>
+        <p><strong>Email:</strong> waotechlimited@gmail.com</p>
+        <p><strong>Hours:</strong> 8:00 AM - 6:00 PM</p>
+        <a href="{{ url_for('admin_login') }}" class="admin-link">Admin</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-text">
+          <h2>Build Real Tech Skills for the Future</h2>
+          <p>
+            Register today for in-demand tech courses taught by experienced
+            instructors. Learn practical skills in web development, design,
+            cybersecurity, data analysis and more.
+          </p>
+
+          <div class="hero-badges">
+            <span>Professional Tutors</span>
+            <span>Flexible Learning</span>
+            <span>Affordable Pricing</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- COURSES -->
+      <section class="courses-section">
+        <h2>Popular Courses & Prices</h2>
+
+        <div class="courses-grid">
+          {% for course in courses %}
+          <div class="course-card">
+            <h3>{{ course.name }}</h3>
+
+            <p class="price">{{ course.price }}</p>
+
+            <p style="font-size: 13px; color: #555">
+              ⏱ Duration: {{ course.duration }}
+            </p>
+
+            <p style="font-size: 13px; color: #888">
+              📂 Category: {{ course.category }}
+            </p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- FORM -->
+      <section class="form-section">
+        <div class="form-card">
+          <h2>Student Registration Form</h2>
+
+          <p class="form-note">
+            Registration is open daily from 8:00 AM to 6:00 PM
+          </p>
+
+          <form id="registrationForm">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" name="full_name" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label>Phone *</label>
+                <input type="text" name="phone" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Gender</label>
+                <select name="gender">
+                  <option value="">Select</option>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Age</label>
+                <input type="number" name="age" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Address</label>
+              <textarea name="address"></textarea>
+            </div>
+
+            <div class="form-row">
+              <!-- UPDATED COURSE DROPDOWN -->
+              <div class="form-group">
+                <label>Select Course *</label>
+                <select name="course" required>
+                  <option value="">Choose a course</option>
+
+                  {% for course in courses %}
+                  <option value="{{ course.name }}|{{ course.price }}">
+                    {{ course.name }} - {{ course.price }} ({{ course.duration
+                    }})
+                  </option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Preferred Time</label>
+                <select name="preferred_time">
+                  <option>MONDAY/WEDNESDAY/THURSDAY (10AM - 12PM)</option>
+                  <option>WEEKENDS (1PM - 4PM)</option>
+                  <!-- <option>Afternoon (12PM - 3PM)</option>
+                  <option>Evening (4PM - 6PM)</option> -->
+                </select>
+              </div>
+            </div>
+
+            <button class="btn-primary">Register Now</button>
+
+            <p id="formMessage" class="message"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>
+        <h3>Waotech Limited</h3>
+        <p>Your pathway to digital success.</p>
+      </div>
+
+      <div>
+        <h4>Enquiries</h4>
+        <p>Phone: +234 810 659 8180</p>
+        <p>Email: waotechlimited@gmail.com</p>
+        <p>Location: Isolo, Lagos</p>
+      </div>
+
+      <div>
+        <h4>Office Hours</h4>
+        <p>Monday - Friday</p>
+        <p>8:00 AM - 6:00 PM</p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

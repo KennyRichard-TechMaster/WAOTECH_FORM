@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body class="admin-body">
+    <!-- HEADER -->
+    <header class="admin-header">
+      <div>
+        <h1>Admin Dashboard</h1>
+        <p style="margin-top: 5px">
+          Welcome, <strong>{{ admin_name }}</strong>
+        </p>
+      </div>
+
+      <div>
+        <a href="/admin/courses" class="admin-btn secondary">Manage Courses</a>
+        <a href="/logout" class="admin-btn danger">Logout</a>
+      </div>
+    </header>
+
+    <!-- SUMMARY -->
+    <section class="admin-summary">
+      <div class="summary-card">
+        <h3>Total Registrations</h3>
+        <p>{{ registrations|length }}</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>School Hours</h3>
+        <p>8:00 AM - 6:00 PM</p>
+      </div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="table-section">
+      <h2>Student Registrations</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Course</th>
+              <th>Price</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for r in registrations %}
+            <tr>
+              <td>{{ r.id }}</td>
+              <td>{{ r.full_name }}</td>
+              <td>{{ r.email }}</td>
+              <td>{{ r.phone }}</td>
+              <td>{{ r.course }}</td>
+              <td>{{ r.price }}</td>
+              <td>{{ r.preferred_time }}</td>
+              <td>{{ r.created_at }}</td>
+
+              <td>
+                <a
+                  href="/admin/delete-registration/{{ r.id }}"
+                  class="admin-btn danger"
+                  onclick="return confirm('Delete this registration?');"
+                >
+                  Delete
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

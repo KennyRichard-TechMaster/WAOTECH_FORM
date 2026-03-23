@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Manage Courses</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body class="admin-body">
+    <header class="admin-header">
+      <h1>Course Management</h1>
+      <div>
+        <a href="/admin" class="admin-btn secondary">Dashboard</a>
+        <a href="/logout" class="admin-btn danger">Logout</a>
+      </div>
+    </header>
+
+    <section class="form-card">
+      <h2>Add Course</h2>
+
+      <form method="POST" action="/admin/add-course">
+        <input type="text" name="name" placeholder="Course Name" required />
+        <input type="text" name="price" placeholder="₦50,000" required />
+        <input type="text" name="duration" placeholder="3 Months" required />
+
+        <select name="category">
+          <option>Programming</option>
+          <option>Design</option>
+          <option>Data</option>
+          <option>Security</option>
+        </select>
+
+        <button class="btn-primary">Add Course</button>
+      </form>
+    </section>
+
+    <section class="table-section">
+      <h2>All Courses</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Duration</th>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for c in courses %}
+          <tr>
+            <form method="POST" action="/admin/update-course/{{ c.id }}">
+              <td>{{ c.id }}</td>
+              <td><input name="name" value="{{ c.name }}" /></td>
+              <td><input name="price" value="{{ c.price }}" /></td>
+              <td><input name="duration" value="{{ c.duration }}" /></td>
+              <td><input name="category" value="{{ c.category }}" /></td>
+
+              <td>
+                <button class="admin-btn secondary">Update</button>
+                <a
+                  href="/admin/delete-course/{{ c.id }}"
+                  class="admin-btn danger"
+                  >Delete</a
+                >
+              </td>
+            </form>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
