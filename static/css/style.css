@@ -394,32 +394,119 @@ tr:nth-child(even) {
 }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  /* NAVBAR */
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 15px 20px;
+  }
+
+  .nav-left {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+  }
+
+  .nav-left h1 {
+    font-size: 20px;
+  }
+
+  .subtext {
+    font-size: 12px;
   }
 
   .nav-right {
-    text-align: left;
+    margin-top: 10px;
+    font-size: 13px;
   }
 
+  .admin-link {
+    margin-top: 10px;
+    padding: 8px 18px;
+  }
+
+  /* MAIN OFFSET */
   main {
-    margin-top: 165px;
+    margin-top: 180px;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 40px 20px;
+  }
+
+  .hero-text h2 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .hero-text p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .hero-badges {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-badges span {
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* COURSES */
+  .courses-section {
+    padding: 30px 20px;
+  }
+
+  .course-card {
+    padding: 18px;
+  }
+
+  .course-card h3 {
+    font-size: 17px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  /* FORM */
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-card {
+    padding: 20px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
   }
 
-  .hero-text h2 {
-    font-size: 31px;
+  input,
+  select,
+  textarea {
+    font-size: 14px;
   }
 
-  .admin-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
+  .btn-primary {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: 25px 20px;
+    text-align: center;
   }
 }
