@@ -13,7 +13,7 @@ body {
 
 /* NAVBAR */
 .navbar {
-  position: fixed;
+  position: relative;
   top: 0;
   width: 100%;
   background: #0b132b;
@@ -34,6 +34,7 @@ body {
 
 .logo {
   height: 58px;
+  min-width: fit-content;
   object-fit: cover;
   border-radius: 10px;
   background: #fff;
