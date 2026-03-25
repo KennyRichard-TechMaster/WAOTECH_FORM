@@ -398,7 +398,7 @@ tr:nth-child(even) {
 @media (max-width: 768px) {
   /* NAVBAR */
   .navbar {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     text-align: center;
     padding: 15px 20px;
@@ -427,6 +427,7 @@ tr:nth-child(even) {
   .nav-right {
     margin-top: 10px;
     font-size: 13px;
+    padding-bottom: 20px;
   }
 
   .admin-link {
