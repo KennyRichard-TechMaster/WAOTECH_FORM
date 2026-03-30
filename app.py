@@ -358,8 +358,13 @@ def logout():
 # =========================
 # RUN
 # =========================
+@app.before_request
+def initialize():
+    if not hasattr(app, "db_initialized"):
+        init_db()
+        app.db_initialized = True
 
-init_db()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
+    
