@@ -59,6 +59,17 @@ body {
   display: inline-block;
   margin-top: 6px;
   text-decoration: none;
+  /* background: #00c2ff; */
+  color: #0b132b;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  max-width: 2px;
+}
+.get_started_button {
+  display: inline-block;
+  margin-top: 6px;
+  text-decoration: none;
   background: #00c2ff;
   color: #0b132b;
   padding: 8px 14px;
@@ -431,10 +442,14 @@ tr:nth-child(even) {
   }
 
   .admin-link {
+    display: none;
     margin-top: 10px;
     padding: 8px 18px;
   }
-
+  .get_started_button {
+    margin-top: 10px;
+    padding: 8px 18px;
+  }
   /* MAIN OFFSET */
   main {
     margin-top: 180px;

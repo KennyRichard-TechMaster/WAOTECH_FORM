@@ -31,7 +31,8 @@
         <!-- <p><strong>Phone:</strong> +234 810 659 8180</p>
         <p><strong>Email:</strong> waotechlimited@gmail.com</p>
         <p><strong>Hours:</strong> 8:00 AM - 6:00 PM</p> -->
-        <a href="{{ url_for('admin_login') }}" class="admin-link">Admin</a>
+        <a href="#footer" class="get_started_button">GET STARTED</a>
+        <!-- <a href="{{ url_for('admin_login') }}" class="admin-link">Admin</a> -->
       </div>
     </header>
 
@@ -144,6 +145,7 @@
               <div class="form-group">
                 <label>Preferred Time</label>
                 <select name="preferred_time">
+                  <option value="Select">SELECT</option>
                   <option>MONDAY/WEDNESDAY/THURSDAY (10AM - 12PM)</option>
                   <option>WEEKENDS (1PM - 4PM)</option>
                   <!-- <option>Afternoon (12PM - 3PM)</option>
@@ -161,7 +163,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div>
         <h3>Waotech Limited</h3>
         <p>Your pathway to digital success.</p>
