@@ -54,10 +54,12 @@ def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
 
+    id_type = "INTEGER PRIMARY KEY AUTOINCREMENT" if DB_TYPE == "sqlite" else "SERIAL PRIMARY KEY"
+
     # registrations table
-    cursor.execute("""
+    cursor.execute(f"""
         CREATE TABLE IF NOT EXISTS registrations (
-            id SERIAL PRIMARY KEY,
+            id {id_type},
             full_name TEXT,
             email TEXT,
             phone TEXT,
@@ -72,9 +74,9 @@ def init_db():
     """)
 
     # courses table
-    cursor.execute("""
+    cursor.execute(f"""
         CREATE TABLE IF NOT EXISTS courses (
-            id SERIAL PRIMARY KEY,
+            id {id_type},
             name TEXT,
             price TEXT,
             duration TEXT,
@@ -244,6 +246,9 @@ def admin_courses():
 
 @app.route("/admin/add-course", methods=["POST"])
 def add_course():
+    if "admin" not in session:
+        return redirect(url_for("admin_login"))
+
     data = request.form
 
     conn = get_db_connection()
@@ -272,6 +277,9 @@ def add_course():
 
 @app.route("/admin/update-course/<int:id>", methods=["POST"])
 def update_course(id):
+    if "admin" not in session:
+        return redirect(url_for("admin_login"))
+
     data = request.form
 
     conn = get_db_connection()
@@ -308,6 +316,9 @@ def update_course(id):
 
 @app.route("/admin/delete-course/<int:id>")
 def delete_course(id):
+    if "admin" not in session:
+        return redirect(url_for("admin_login"))
+
     conn = get_db_connection()
     cursor = conn.cursor()
 
@@ -356,8 +367,9 @@ def logout():
 
 
 # =========================
-# RUN
+# INIT ON FIRST REQUEST
 # =========================
+
 @app.before_request
 def initialize():
     if not hasattr(app, "db_initialized"):
@@ -365,6 +377,9 @@ def initialize():
         app.db_initialized = True
 
 
+# =========================
+# RUN
+# =========================
+
 if __name__ == "__main__":
     app.run()
-    
